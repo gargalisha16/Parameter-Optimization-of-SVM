@@ -1,78 +1,64 @@
 # Parameter-Optimization-of-SVM
-Iris Dataset Clustering Assignment
 
-This project focuses on applying unsupervised clustering techniques to the well-known Iris dataset, incorporating various preprocessing strategies and clustering algorithms. The effectiveness of each approach is assessed using three commonly used clustering evaluation metrics.
+# Iris Dataset Clustering Assignment
 
-Dataset Overview
+This project applies unsupervised clustering techniques to the Iris dataset, exploring the impact of various preprocessing strategies and clustering algorithms. Clustering performance is evaluated using standard clustering metrics to determine the most effective approach.
 
-Source: sklearn.datasets.load_iris()
+## 📁 Dataset
 
-Features: Four numerical attributes representing the physical characteristics of iris flowers
+- **Source**: `sklearn.datasets.load_iris()`
+- **Features**: 4 numerical attributes describing the morphology of iris flowers
+- **Target**: Iris species (used only for evaluation, not for training)
 
-Target: Iris species (used solely for reference and not for model training)
+## ⚙️ Clustering Algorithms Used
 
-Clustering Algorithms Implemented
+- K-Means Clustering  
+- Agglomerative (Hierarchical) Clustering  
+- Mean Shift Clustering  
 
-K-Means Clustering
+## 🔧 Preprocessing Techniques
 
-Agglomerative (Hierarchical) Clustering
+- **Raw**: No transformation applied  
+- **Normalized**: StandardScaler  
+- **Transformed**: PowerTransformer  
+- **PCA**: Principal Component Analysis (2 components)  
+- **Norm + Trans**: StandardScaler followed by PowerTransformer  
+- **Norm + Trans + PCA**: StandardScaler + PowerTransformer + PCA (2D)
 
-Mean Shift Clustering
+## 📏 Evaluation Metrics
 
-Preprocessing Techniques Explored
+- **Silhouette Score**: Higher values indicate better-defined clusters  
+- **Calinski-Harabasz Index**: Higher values reflect better separation  
+- **Davies-Bouldin Score**: Lower values signify better clustering
 
-Raw: No modifications
+## 📋 Results Summary
 
-Normalized: StandardScaler
+Clustering was conducted with 2, 3, 4, and 5 clusters for both KMeans and Hierarchical methods. Mean Shift determined the number of clusters automatically based on bandwidth estimation.
 
-Transformed: PowerTransformer
+## 🏆 Best Clustering Configuration
 
-PCA: Principal Component Analysis (reduced to 2 components)
+| Algorithm     | Preprocessing | Number of Clusters | Silhouette Score |
+|--------------|----------------|--------------------|------------------|
+| Hierarchical | PCA            | 2                  | 0.7112           |
 
-Normalized + Transformed: Combination of StandardScaler and PowerTransformer
+This configuration produced the most compact and well-separated clusters among all tested setups.
 
-Normalized + Transformed + PCA: StandardScaler and PowerTransformer followed by PCA (2 components)
+## 📌 Observations
 
-Evaluation Metrics Used
+- Hierarchical Clustering with PCA yielded the highest overall performance.
+- KMeans showed consistent results but slightly lower silhouette scores.
+- Mean Shift's results were variable, depending on preprocessing and bandwidth.
+- Normalization combined with transformation improved clustering in certain cases, especially for Hierarchical Clustering.
+- PCA helped reduce dimensionality and enhanced clustering performance in some scenarios.
 
-Silhouette Score (higher values indicate better-defined clusters)
+## 📈 Silhouette Score Visualization
 
-Calinski-Harabasz Index (higher values suggest more distinct clusters)
+A chart was generated to compare silhouette scores across different combinations of preprocessing techniques and clustering algorithms.
 
-Davies-Bouldin Score (lower values are preferable)
+## ✅ Conclusion
 
-Summary of Results
-Clustering was performed with 2, 3, 4, and 5 clusters for both KMeans and Hierarchical algorithms. Mean Shift determined the number of clusters based on the estimated bandwidth.
+Clustering effectiveness is significantly influenced by preprocessing choices. In this project, Hierarchical Clustering combined with PCA preprocessing delivered the best results based on the silhouette score. This highlights the importance of experimenting with multiple preprocessing and clustering strategies when analyzing real-world datasets.
 
-Top Performing Configuration
-
-Algorithm: Hierarchical Clustering
-
-Preprocessing: PCA
-
-Number of Clusters: 2
-
-Silhouette Score: 0.7112
-
-This configuration delivered the most compact and well-separated clusters among all combinations.
-
-Key Observations
-
-Hierarchical Clustering with PCA showed the best overall performance.
-
-KMeans provided stable results but had slightly lower silhouette scores.
-
-Mean Shift's effectiveness varied depending on preprocessing and bandwidth.
-
-Combining normalization with transformation improved results in certain scenarios, especially for Hierarchical Clustering.
-
-PCA contributed positively by reducing dimensionality and improving clustering quality in some cases.
-
-Silhouette Score Comparison
-A chart was used to visualize the silhouette scores across all combinations of preprocessing methods and clustering algorithms.
-
-Conclusion
-The success of clustering models is significantly affected by preprocessing choices. In this project, Hierarchical Clustering paired with PCA preprocessing produced the best clustering separation according to the silhouette score. This highlights the importance of experimenting with various preprocessing and clustering combinations when working on real-world datasets.
 
 
 
